@@ -15,9 +15,13 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import tomllib
 import unittest
 from pathlib import Path
+
+try:
+    import tomllib  # py>=3.11
+except ImportError:
+    import tomli as tomllib  # type: ignore
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = REPO_ROOT / "skills" / "migrate-to-sarvam" / "scripts" / "migrate.py"

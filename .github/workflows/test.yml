@@ -23,4 +23,4 @@ jobs:
       - name: Run test suite
         run: python tests/test_migrate.py -v
       - name: Dry-run smoke (script entrypoint)
-        run: python skills/migrate-to-sarvam/scripts/migrate.py --home /tmp/empty-home
+        run: mkdir -p /tmp/empty-home && python skills/migrate-to-sarvam/scripts/migrate.py --home /tmp/empty-home
