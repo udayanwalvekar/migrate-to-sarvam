@@ -151,7 +151,11 @@ class Plan:
             path.mkdir(parents=True, exist_ok=True)
         elif kind == "copy":
             path.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(payload["src"], path)
+            src = Path(payload["src"])
+            if src.is_dir():
+                shutil.copytree(src, path, dirs_exist_ok=True)
+            else:
+                shutil.copy2(src, path)
         elif kind == "symlink":
             path.parent.mkdir(parents=True, exist_ok=True)
             if path.is_symlink() or path.exists():
@@ -163,6 +167,7 @@ class Plan:
             path.write_text(payload["content"], encoding="utf-8")
         elif kind == "edit":
             path.parent.mkdir(parents=True, exist_ok=True)
+            _backup_if_exists(path)
             text = path.read_text(encoding="utf-8") if path.exists() else ""
             path.write_text(payload["transform"](text), encoding="utf-8")
         else:

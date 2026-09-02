@@ -1,5 +1,7 @@
 # migrate-to-sarvam
 
+[![test](https://github.com/udayanwalvekar/migrate-to-sarvam/actions/workflows/test.yml/badge.svg)](https://github.com/udayanwalvekar/migrate-to-sarvam/actions/workflows/test.yml)
+
 An [agent skill](https://skills.sh) that migrates your **Claude Code** and
 **Codex** setup into **Sarvam Code**: skills, slash commands, MCP servers,
 durable memories, and global instructions — with a dry-run plan you review
